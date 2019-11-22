@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    image: node:latest
+    working_dir: /var/app
+    ports:
+    - "1337:1337"
+    expose:
+    - "1337"
+    volumes:
+    - ./app/ecomrc:/var/app
+    command: npm run develop
+    env_file:
+    - .env
