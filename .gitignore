@@ -116,6 +116,7 @@ exports
 build
 
 .env
-mongodb/**
+mongodb
 mongodb_config/**
 .next
+old

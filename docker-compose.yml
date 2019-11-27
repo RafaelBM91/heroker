@@ -1,14 +1,40 @@
 version: '2'
+
 services:
+
   web:
     image: node:latest
+    depends_on:
+    - mongo
+    volumes:
+    - ./app:/var/app
+    - ./commands:/var/commands
     working_dir: /var/app
-    ports:
+    command: sh ../commands/rundev.sh
+    ports: 
     - "1337:1337"
+    - "3000:3000"
     expose:
     - "1337"
-    volumes:
-    - ./app/ecomrc:/var/app
-    command: npm run develop
+    - "3000"
+    networks:
+    - ecomrc
     env_file:
-    - .env
+    - .env.local
+
+  mongo:
+    image: mongo:latest
+    volumes:
+    - ./mongodb:/data/db
+    ports: 
+    - "27018:27017"
+    expose:
+    - "27017"
+    networks:
+    - ecomrc
+    env_file:
+    - .env.local
+
+networks:
+  ecomrc:
+    driver: bridge
