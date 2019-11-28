@@ -1,5 +1,5 @@
 build: ## build image
-	docker-compose -f docker-compose.yml build
+	docker build -t ecomrcapp --file DockerfileDev .
 
 start: ## start container
 	docker-compose -f docker-compose.yml up --no-build -d
@@ -17,4 +17,4 @@ build-pro: ## build image to production
 	docker build -t heroker .
 
 run-imagen: ## stop container
-	docker run -it -p 8080:80 --env-file ./.env heroker
+	docker run -it -p 8080:80 --env-file ./.env ecomrcapp

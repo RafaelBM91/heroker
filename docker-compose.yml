@@ -2,8 +2,8 @@ version: '2'
 
 services:
 
-  web:
-    image: node:latest
+  app:
+    image: ecomrcapp
     depends_on:
     - mongo
     volumes:
@@ -12,11 +12,9 @@ services:
     working_dir: /var/app
     command: sh ../commands/rundev.sh
     ports: 
-    - "1337:1337"
-    - "3000:3000"
+    - "8080:80"
     expose:
-    - "1337"
-    - "3000"
+    - "80"
     networks:
     - ecomrc
     env_file:

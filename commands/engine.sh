@@ -12,8 +12,8 @@ echo "**********************************************"
 cd /home/commands
 sed -i "s/<PORT>/${PORT}/g" /etc/nginx/nginx.conf
 service nginx restart
-# cd /var/app/ecomrc
-# setsid npm start >/dev/null 2>&1 < /dev/null &
-# cd /var/app/front
-# setsid npm start >/dev/null 2>&1 < /dev/null
-# npm start
+cd /var/app/ecomrc
+setsid npm start >/dev/null 2>&1 < /dev/null &
+cd /var/app/front
+setsid npm start >/dev/null 2>&1 < /dev/null
+npm start
