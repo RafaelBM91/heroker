@@ -16,5 +16,5 @@ logs: ## show logs
 build-pro: ## build image to production
 	docker build -t heroker .
 
-run-imagen: ## stop container
+run-image: ## stop container
 	docker run -it -p 8080:80 --env-file ./.env ecomrcapp
